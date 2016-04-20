@@ -79,6 +79,8 @@ module FFMPEG
         @bitrate = metadata[:format][:bit_rate].to_i
         if !metadata[:format][:size].nil?
           @size = metadata[:format][:size].to_i
+        else
+          @size = 0
         end
         
         unless video_streams.empty?
