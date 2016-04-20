@@ -155,12 +155,14 @@ module FFMPEG
     end
 
     def size
-      if !@path.match(/^(http|https)/).nil?
-         # sementara
-         return @size
-      else
-        File.size(@path)
-      end
+      return @size
+      
+      # if !@path.match(/^(http|https)/).nil?
+      #    # sementara
+      #    return @size
+      # else
+      #   File.size(@path)
+      # end
       
     end
 
