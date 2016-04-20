@@ -77,7 +77,10 @@ module FFMPEG
                          end
 
         @bitrate = metadata[:format][:bit_rate].to_i
-
+        if !metadata[:format][:size].nil?
+          @size = metadata[:format][:size].to_i
+        end
+        
         unless video_streams.empty?
           # TODO: Handle multiple video codecs (is that possible?)
           video_stream = video_streams.first
@@ -152,7 +155,7 @@ module FFMPEG
     def size
       if !@path.match(/^(http|https)/).nil?
          # sementara
-         return 1000 
+         return @size
       else
         File.size(@path)
       end
